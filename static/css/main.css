@@ -1,0 +1,43 @@
+header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+.header-logo{
+    height = 64px;
+    weight = 64px;
+}
+.header-logo{
+    padding-left: 10px
+}
+.footer-logo{
+    padding-left: 20px
+}
+footer{
+padding-right: 50px
+}
+
+.page {
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+min-height: 100vh;
+}
+.header-logo {
+     margin-bottom: 10px;
+}
+
+.content {
+    flex-grow: 1;
+    justify-content: center;
+   text-align: justify;
+}
+.HEADER_KNOPKI{
+    margin-left: 10px;
+
+}
+
+

@@ -1,0 +1,303 @@
+{% extends "base.html" %}
+
+{% block title %}
+shop
+{% endblock %}
+
+{% block content %}
+<style>
+
+    .card {
+        height: 350px;
+    }
+    .gray-block {
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+        z-index: 998; /* Behind the payment buttons */
+    }
+    .btn-pay {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 999;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .btn-pay button {
+        margin: 10px;
+    }
+
+    .CAROUSEL_CONTAINER{
+        height: 400px
+    }
+    #myCarousel{
+            height: 400px
+
+    }
+</style>
+<div class="CAROUSEL_CONTAINER">
+    <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel"  >
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+                <div class="container">
+                    <div class="carousel-caption text-start">
+                        <p class="opacity-75">НИЧЕГО 1 лвл</p>
+                        <p><a class="btn btn-lg btn-primary buy-btn" data-price="20">КУПИТЬ 20 грн</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <p>КРУТОЕ НИЧЕГО 2 лвл</p>
+                        <p><a class="btn btn-lg btn-primary buy-btn" data-price="60">КУПИТЬ 60 грн</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></svg>
+                <div class="container">
+                    <div class="carousel-caption text-end">
+                        <h1>СУПЕР ПУПЕР 99 лвл</h1>
+                        <p>СУПЕР ПУПЕР 99 лвл</p>
+
+                        <p><a class="btn btn-lg btn-primary buy-btn" data-price="200">КУПИТЬ 200 грн</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="gray-block">
+        <h1 style="margin: 0; text-align: center; margin_bottom: 30px;">СУПЕР КРУТЫЕ ТОВАРЫ</h1>
+    </div>
+    <div class="gray-block">
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            <div class="col" id="product20">
+                <div class="card shadow-sm">
+                    <img src="{{url_for('static', filename='image/Безымянный.png')}}" class="card-img-top mx-auto d-block" style="width: 50%; height: 50%;" alt="...">
+                    <div class="card-body text-center">
+                        <p class="card-text">Ничего</p>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-lg btn-success buy-btn" data-price="20" data-product="Ничего">20 грн</button>
+                        </div>
+                        <p class="text-muted">ты крутой</p>
+                        <form action="/add_to_cart" method="post">
+                            <input type="hidden" name="product" value="Ничего">
+                            <input type="hidden" name="price" value="20"> <!-- Set the price value here -->
+                            <input type="hidden" name="quantity" value="1" min="1" max="9"> <!-- Quantity input -->
+                            <button href="{{ url_for('cart') }}" type="submit" data-price="20" name="price">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="product60">
+                <div class="card shadow-sm">
+                    <img src="{{url_for('static', filename='image/ничего.png')}}" class="card-img-top mx-auto d-block" style="width: 50%; height: 50%;" alt="...">
+                    <div class="card-body text-center">
+                        <p class="card-text">красивое ничего</p>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-lg btn-success buy-btn" data-price="60" data-product="Красивое ничего">60 грн</button>
+                        </div>
+                        <p class="text-muted">этот продукт очень крутой</p>
+                        <form action="/add_to_cart" method="post">
+                            <input type="hidden" name="product" value="Красивое Ничего">
+                            <input type="hidden" name="price" value="60"> <!-- Set the price value here -->
+                            <input type="hidden" name="quantity" value="1" min="1" max="9"> <!-- Quantity input -->
+                            <button href="{{ url_for('cart') }}" type="submit">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col" id="product200">
+                <div class="card shadow-sm">
+                    <img src="{{url_for('static', filename='image/.png')}}" class="card-img-top mx-auto d-block" style="width: 50%; height: 50%;" alt="...">
+                    <div class="card-body text-center">
+                        <p class="card-text">  ㅤㅤㅤㅤ</p>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-lg btn-success buy-btn" data-price="200" data-product="Товар 3">200 грн</button>
+                        </div>
+                        <p class="text-muted">ты крутой</p>
+                        <form action="/add_to_cart" method="post">
+                            <input type="hidden" name="product" value="">
+                            <input type="hidden" name="price" value="200">
+                            <input type="hidden" name="quantity" value="1" min="1" max="9">
+                            <button href="{{ url_for('cart') }}" type="submit" data-price="200" name="price">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="overlay"></div>
+
+<div class="btn-pay" style="display: none;">
+    <div class="confirmation-message">
+        <h1>Вы точно хотите купить этот товар за <span class="price"></span> грн?</h1>
+    </div>
+    <button class="btn btn-success btn-pay-now" type="button">оплатить</button>
+    <button class="btn btn-danger btn-reject-now" type="button">отклонить</button>
+</div>
+
+<script>
+    // Function to scroll to a specific product card
+    function scrollToProduct(productId) {
+        const element = document.getElementById(productId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+
+    // Function to handle buy button click
+    document.querySelectorAll('.buy-btn').forEach(item => {
+        item.addEventListener('click', event => {
+            const price = parseInt(item.getAttribute('data-price'));
+            // Show white overlay
+            document.querySelector('.overlay').style.display = 'block';
+            // Show confirmation message with the product price
+            document.querySelector('.price').innerText = price;
+            document.querySelector('.confirmation-message').style.display = 'block';
+            // Show pay button if price is one of 20, 60, or 200
+            if (price === 20 || price === 60 || price === 200) {
+                document.querySelector('.btn-pay').style.display = 'block';
+                // Change pay button color based on price
+                if (price === 20) {
+                    document.querySelector('.btn-pay-now').classList.remove('btn-danger');
+                    document.querySelector('.btn-pay-now').classList.add('btn-success');
+                } else if (price === 60) {
+                    document.querySelector('.btn-pay-now').classList.remove('btn-danger');
+                    document.querySelector('.btn-pay-now').classList.add('btn-success');
+                } else if (price === 200) {
+                    document.querySelector('.btn-pay-now').classList.remove('btn-danger');
+                    document.querySelector('.btn-pay-now').classList.add('btn-success');
+                }
+                // Store price data for future use
+                document.querySelector('.btn-pay-now').setAttribute('data-price', price);
+            }
+            // Store product data for future use
+            document.querySelector('.btn-pay-now').setAttribute('data-product', item.getAttribute('data-product'));
+            // Scroll to the product card
+            event.preventDefault(); // Prevent form submission
+            const productId = 'product' + price;
+            scrollToProduct(productId);
+        });
+    });
+
+    // Function to handle pay button click
+    document.querySelector('.btn-pay-now').addEventListener('click', () => {
+        const price = parseInt(document.querySelector('.btn-pay-now').getAttribute('data-price'));
+        // Redirect user based on the price
+        if (price === 20) {
+            window.location.href = '#'; // Замените на вашу ссылку
+        } else if (price === 60) {
+            window.location.href = '#'; // Замените на вашу ссылку
+        } else if (price === 200) {
+            window.location.href = '#'; // Замените на вашу ссылку
+        }
+    });
+
+    // Function to handle reject button click
+    document.querySelector('.btn-reject-now').addEventListener('click', () => {
+        // Hide the overlay, confirmation message, and pay button after rejection
+        document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.confirmation-message').style.display = 'none';
+        document.querySelector('.btn-pay').style.display = 'none';
+    });
+</script>
+<script>
+    document.getElementById('cart-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвратить отправку формы по умолчанию
+
+        var form = event.target;
+        var items = form.querySelectorAll('input[name="items[]"]');
+        var prices = form.querySelectorAll('input[name="prices[]"]');
+        var formData = new FormData(); // Создать объект FormData для отправки данных на сервер
+
+        items.forEach(function(item, index) {
+            var itemName = item.value;
+            var itemPrice = prices[index].value;
+            formData.append('items[]', itemName); // Добавить имя предмета в FormData
+            formData.append('prices[]', itemPrice); // Добавить цену предмета в FormData
+        });
+
+        // Отправить данные на сервер с помощью AJAX-запроса
+        fetch('/add_to_cart', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Items added to cart successfully');
+                // Обновить страницу или выполнить другие действия при успешном добавлении в корзину
+            } else {
+                console.error('Failed to add items to cart');
+            }
+        })
+        .catch(error => {
+            console.error('Error adding items to cart:', error);
+        });
+    });
+</script>
+<script>
+    // Function to scroll to a specific product card
+    function scrollToProduct(productId) {
+        const element = document.getElementById(productId);
+        if (element) {
+            const yOffset = -180; // Смещение на 100 пикселей вверх
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    }
+
+    // Function to handle carousel card click
+    document.querySelectorAll('.carousel-item').forEach(item => {
+        item.addEventListener('click', event => {
+            const priceElement = item.querySelector('.btn-primary');
+            if (priceElement) {
+                event.preventDefault();
+                const price = parseInt(priceElement.textContent.trim().split(' ')[1]);
+                const productId = 'product' + price;
+                scrollToProduct(productId);
+            }
+        });
+    });
+</script>
+
+
+<h1>Купите</h1>
+<h1>я буду рад</h1>
+<h1>очень сильно</h1>
+
+{% endblock %}

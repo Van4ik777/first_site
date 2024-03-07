@@ -1,0 +1,12 @@
+
+{%block title%}
+Цитати відомих людей
+{% endblock %}
+
+{% block content%}
+<h1>User Profile</h1>
+
+    <div>
+        <img src="{{ url_for('static', filename='uploads/' + current_user.image) }}" alt="User Image" style="max-width: 200px;">
+    </div>
+{% endblock %}
