@@ -2,8 +2,8 @@ header{
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: #fff;
-    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    background:rgba(29, 36, 47, 0.9) ;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
 }
 .header-logo{
@@ -16,8 +16,9 @@ header{
 .footer-logo{
     padding-left: 20px
 }
-footer{
-padding-right: 50px
+footer {
+    background-color: rgba(79, 94, 117, 0.5);
+    padding-right: 50px;
 }
 
 .page {
@@ -30,14 +31,202 @@ min-height: 100vh;
      margin-bottom: 10px;
 }
 
-.content {
+.content{
     flex-grow: 1;
     justify-content: center;
-   text-align: justify;
+    text-align: justify;
 }
 .HEADER_KNOPKI{
     margin-left: 10px;
 
 }
 
+.card {
+    height: 350px;
+}
+.gray-block {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+.btn-pay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.btn-pay button {
+    margin: 10px;
+}
 
+.CAROUSEL_CONTAINER{
+    height: 400px
+    width: 60%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+#myCarousel{
+        height: 400px
+}
+.carousel-item{
+
+    height:400px;
+}
+.container{
+    margin_top: 20px;
+    position: relative;
+}
+.carousel {
+    margin-right: 80px;
+    margin-left: 80px;
+}
+
+.bubbles{
+    position: relative;
+    min-height: 100vh;
+    background-color: #fab907;
+    display:flex;
+}
+.bubbles-content{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+.bubbles img
+{
+    position: relative;
+    height: 80px;
+    width: 80px;
+    margin: 0 4px;
+    border-radius: 50%;
+
+
+    animation: animate 15s linear infinite;
+    animation-duration: calc(125s / var(--i));
+}
+.bubbles img :nth-child(even)
+{
+
+
+}
+@keyframes animate
+{
+  30%
+  {
+    transform: translateY(100vh) scale(0);
+
+  }
+  100%
+  {
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
+
+footer {
+    position: relative;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    padding-bottom: none;
+}
+.ray-block{
+    position: relative;
+    border-radius: 20px;
+    background: #8c8c8c;
+
+}
+
+
+.login{
+    width:450px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.profile{
+    position: relative;
+    margin: 0 auto;
+}
+
+.register{
+    width:450px;
+    position: relative;
+    margin: 0 auto;
+}
+
+
+
+.card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: #f8f9fa;
+}
+
+.container_1_kartochka{
+    height: 400px;
+}
+
+.alert {
+    width: 40%;
+    border: 2px solid #F0551F;
+    border-radius: 10px;
+    margin:0 auto;
+}
+
+text{
+        font-family:Helvetica, Arial, sans-serif;
+        font-size:11px;
+        pointer-events:none;
+    }
+
+
+text{
+        font-family:Helvetica, Arial, sans-serif;
+        font-size:11px;
+        pointer-events:none;
+    }
+#chart{
+    position:absolute;
+    width:500px;
+    height:500px;
+    top:0;
+    left:0;
+}
+#question{
+    position: absolute;
+    width:400px;
+    height:500px;
+    top:0;
+    left:520px;
+}
+#question h1{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top:50%;
+    -webkit-transform:translate(0,-50%);
+            transform:translate(0,-50%);
+}
